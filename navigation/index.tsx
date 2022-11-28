@@ -3,8 +3,6 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from "@expo/vector-icons";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import {
   NavigationContainer,
   DefaultTheme,
@@ -12,21 +10,13 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+import { ColorSchemeName } from "react-native";
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import Reports from "../screens/Reports";
-import Registeration from "../screens/Registeration";
-import Search from "../screens/Search";
-import {
-  RootStackParamList,
-  RootTabParamList,
-  RootTabScreenProps,
-} from "../types";
-import LinkingConfiguration from "./LinkingConfiguration";
+import { RootStackParamList } from "../types";
+import { STACK_ROUTES } from "../constants/Routes";
+import DrawerNavigator from "./DrawerNavigator";
 
 export default function Navigation({
   colorScheme,
@@ -35,7 +25,6 @@ export default function Navigation({
 }) {
   return (
     <NavigationContainer
-      linking={LinkingConfiguration}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
       <RootNavigator />
@@ -53,12 +42,12 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Root"
+        name={STACK_ROUTES.Home}
         component={DrawerNavigator}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="NotFound"
+        name={STACK_ROUTES.NotFound}
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
       />
@@ -68,60 +57,3 @@ function RootNavigator() {
     </Stack.Navigator>
   );
 }
-
-
-const Drawer = createDrawerNavigator<RootTabParamList>();
-
-function DrawerNavigator() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <Drawer.Navigator
-      initialRouteName="Registeration"
-      screenOptions={{
-        // tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}
-    >
-      <Drawer.Screen
-        name="Registeration"
-        component={Registeration}
-        options={({ navigation }: RootTabScreenProps<"Registeration">) => ({
-          title: "Registeration",
-          // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate("Modal")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
-        })}
-      />
-      <Drawer.Screen
-        name="Search"
-        component={Search}
-        options={{
-          title: "Search",
-          // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Drawer.Screen
-        name="Reports"
-        component={Reports}
-        options={{
-          title: "Reports",
-          // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Drawer.Navigator>
-  );
-}
-
