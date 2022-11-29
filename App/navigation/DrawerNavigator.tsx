@@ -6,7 +6,7 @@ import * as React from "react";
 import Reports from "../screens/Reports";
 import Registeration from "../screens/Registeration";
 import Search from "../screens/Search";
-import { RootTabParamList } from "../types";
+import { RootTabParamList } from "../../types";
 import { HOME_ROUTES } from "../constants/Routes";
 import { useThemeColor } from "../components/Themed";
 import Colors from "../constants/Colors";
@@ -16,7 +16,6 @@ const Drawer = createDrawerNavigator<RootTabParamList>();
 export default function DrawerNavigator() {
   return (
     <Drawer.Navigator
-    
       initialRouteName={HOME_ROUTES.Register}
       detachInactiveScreens={true}
       screenOptions={{

@@ -25,7 +25,7 @@ module.exports = {
   ],
   preset: 'react-native',
   coverageReporters: ['text', 'text-summary', 'html'],
-  transformIgnorePatterns: [
+  "transformIgnorePatterns": [
     'node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)',
   ],
   collectCoverageFrom: [
