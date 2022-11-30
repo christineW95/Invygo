@@ -59,72 +59,76 @@ export default function Registeration({
     setDate(selectedDate);
   };
   return (
-    <View style={{flex:1,backgroundColor: Colors.light.Secondary}}>
-<Image source={require('../../assets/images/logo.jpeg')} resizeMode='center' style={{alignSelf:'center',justifyContent:'center'}}/>
-    <ScrollView
-      nestedScrollEnabled={true}
-      style={styles.container}
-      {...testProps("Registeration_Container")}
-      contentContainerStyle={[styles.content, { flexGrow: 1 }]}
-    >
+    <View style={{ flex: 1, backgroundColor: Colors.light.Secondary }}>
+      <Image
+        source={require("../../assets/images/logo.jpeg")}
+        resizeMode="center"
+        style={{ alignSelf: "center", justifyContent: "center" }}
+      />
+      <ScrollView
+        nestedScrollEnabled={true}
+        style={styles.container}
+        {...testProps("Registeration_Container")}
+        contentContainerStyle={[styles.content, { flexGrow: 1 }]}
+      >
+        <View style={{ flex: 1 }}>
+          <CustomTextInput
+            value={name}
+            label={"Name"}
+            maxLength={20}
+            onChangeText={onChangeText}
+            placeholder={"Enter your username"}
+          />
 
-      <View style={{ flex: 1 }}>
-        <CustomTextInput
-          value={name}
-          label={"Name"}
-          maxLength={20}
-          onChangeText={onChangeText}
-          placeholder={"Enter your username"}
-        />
+          <AgePicker
+            label={"Age"}
+            placeholder={"Enter your age"}
+            listItems={listItems}
+            onSelect={(index: number) => setSelectedAge(listItems[index])}
+            selected={selectedAge}
+          />
 
-        <AgePicker
-          label={"Age"}
-          placeholder={"Enter your age"}
-          listItems={listItems}
-          onSelect={(index: number) => setSelectedAge(listItems[index])}
-          selected={selectedAge}
-        />
+          <Datepicker
+            label="Date of Birth"
+            value={date}
+            onChange={onChangeDate}
+          />
 
-        <Datepicker
-          label="Date of Birth"
-          value={date}
-          onChange={onChangeDate}
-        />
+          <RadioButtonGroup label="Profession" listItems={ProfessionList} />
+          <NationalitiesDropdown
+            label={"Locality"}
+            listItems={nationalities}
+            onSelect={(nationality: NationalityItem) =>
+              setSelectedNationality(nationality)
+            }
+            selected={selectedNationality}
+          />
+          <CustomTextInput
+            value={address}
+            label={"Address"}
+            maxLength={50}
+            numberOfLines={2}
+            onChangeText={onChangeAddress}
+            placeholder={"Enter your address"}
+          />
 
-        <RadioButtonGroup label="Profession" listItems={ProfessionList} />
-        <NationalitiesDropdown
-          label={"Locality"}
-          listItems={nationalities}
-          onSelect={(nationality: NationalityItem) =>
-            setSelectedNationality(nationality)
-          }
-          selected={selectedNationality}
-        />
-        <CustomTextInput
-          value={address}
-          label={"Address"}
-          maxLength={50}
-          numberOfLines={2}
-          onChangeText={onChangeAddress}
-          placeholder={"Enter your address"}
-        />
-
-        <AgePicker
-          label={"Number of Guests"}
-          placeholder={"Select number of guests"}
-          listItems={guestsList}
-          onSelect={(index: number) => setSelectedNumGuests(guestsList[index])}
-          selected={selectedNumGuests}
-        />
-        <Button
-          title="Submit"
-          color={"orange"}
-          {...testProps("Submit_Button")}
-        />
-      </View>
-    </ScrollView>
+          <AgePicker
+            label={"Number of Guests"}
+            placeholder={"Select number of guests"}
+            listItems={guestsList}
+            onSelect={(index: number) =>
+              setSelectedNumGuests(guestsList[index])
+            }
+            selected={selectedNumGuests}
+          />
+          <Button
+            title="Submit"
+            color={"orange"}
+            {...testProps("Submit_Button")}
+          />
+        </View>
+      </ScrollView>
     </View>
-
   );
 }
 

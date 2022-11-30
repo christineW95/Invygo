@@ -1,7 +1,6 @@
 import Colors from "../constants/Colors";
-import { Image, ScrollView, StyleSheet, Text } from "react-native";
+import { Image, ScrollView, StyleSheet, Text,View } from "react-native";
 
-import { View } from "../components/Themed";
 import { testProps } from "../Utils/utils.helper";
 import React from "react";
 
@@ -54,7 +53,7 @@ const{user}=route?.params
               borderRadius: 15,
               shadowColor: "grey",
               shadowOffset: { width: 0, height: 0 }, // change this for more shadow
-              shadowOpacity: 0.2,
+              shadowOpacity: 0.4,
               shadowRadius: 3,
               elevation: 5,
           }}>
@@ -69,7 +68,7 @@ const{user}=route?.params
               borderRadius: 15,
               shadowColor: "grey",
               shadowOffset: { width: 0, height: 0 }, // change this for more shadow
-              shadowOpacity: 0.2,
+              shadowOpacity: 0.4,
               shadowRadius: 3,
               elevation: 5,
           }}>

@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     shadowColor: "grey",
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.4,
     borderColor: "black",
     elevation: 5,
   },

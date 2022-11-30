@@ -70,7 +70,7 @@ const styles =
         width: 1,
         height: 1
       },
-      shadowOpacity: 0.3,
+      shadowOpacity: 0.4,
       shadowRadius: 3,
       backgroundColor: Colors.light.background,
       justifyConten: 'center',

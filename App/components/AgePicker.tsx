@@ -29,7 +29,7 @@ const DropDown = (props: DropDownTypes) => {
     <FlatList
       data={listItems}
       keyExtractor={({ item, index }) => index}
-      style={{ height: 200 }}
+      style={{ maxHeight: 200 }}
       renderItem={({ item, index }) => (
         <List.Item
           {...testProps("AccordionItem_Component")}
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     shadowColor: "grey",
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.4,
     borderColor: "black",
     elevation: 5,
   },
