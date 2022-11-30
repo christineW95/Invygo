@@ -6,7 +6,7 @@ import Label from "./Label";
 import Colors from "../constants/Colors";
 type DatepickerPropTypes = {
   props?: object;
-  value?: Date;
+  value?: any;
   onChange: Function;
   label: string;
 };
@@ -21,7 +21,6 @@ export const Datepicker = (props: DatepickerPropTypes) => {
   const showDatepicker = () => {
     setShow(true);
   };
-
   return (
     <View style={styles.container}>
       <Label label={label ?? label} />
@@ -39,7 +38,8 @@ export const Datepicker = (props: DatepickerPropTypes) => {
       )}
       <TextInput
         onFocus={showDatepicker}
-        value={value?.toLocaleDateString()}
+        value={value?.toString()}
+        onChangeText={(text)=>onChange(text)}
         placeholder="Click to open picker!"
         style={[styles.textInput, style]}
         placeholderTextColor="grey"

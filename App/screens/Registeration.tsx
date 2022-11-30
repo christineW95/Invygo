@@ -1,4 +1,11 @@
-import { StyleSheet, ScrollView, Button, View, Image } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  Button,
+  View,
+  Image,
+  ActivityIndicator,
+} from "react-native";
 
 import { RootTabScreenProps } from "../../types";
 import CustomTextInput from "../components/CustomTextInput";
@@ -14,12 +21,17 @@ import { NationalityItem } from "../Interfaces/Nationalities";
 import AgePicker from "../components/AgePicker";
 import { Datepicker } from "../components/DatePicker";
 import ProfessionTypes from "../factory/profession.factory";
+import { submitUser } from "../services/SubmitUser";
+import { User } from "../Interfaces/User";
+import { HOME_ROUTES } from "../constants/Routes";
+import { Modal } from "react-native-paper";
 
 export default function Registeration({
   navigation,
 }: RootTabScreenProps<"Registeration">) {
   const listItems = generateAgeArray();
   const guestsList = [0, 1, 2];
+  const [isSubmitSuccess, setIsSubmitSuccess] = useState<boolean>(true);
   const [name, setName] = useState<string>();
   const [address, setAddress] = useState<string>();
   const [date, setDate] = useState<Date>(new Date());
@@ -58,6 +70,24 @@ export default function Registeration({
   const onChangeDate = (selectedDate: Date) => {
     setDate(selectedDate);
   };
+  const onPress = async () => {
+    setIsSubmitSuccess(false);
+    const user: User = {
+      name,
+      age: selectedAge,
+      numOfGuests: selectedNumGuests?.toString(),
+      address,
+      nationality: selectedNationality?.country,
+      profession: selectedProfession,
+      dob: date.toString(),
+    };
+    const { success } = await submitUser(user);
+    if (success) {
+      setIsSubmitSuccess(true);
+      navigation.navigate(HOME_ROUTES.Search);
+    }
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: Colors.light.Secondary }}>
       <Image
@@ -122,10 +152,17 @@ export default function Registeration({
             selected={selectedNumGuests}
           />
           <Button
+            onPress={onPress}
             title="Submit"
             color={"orange"}
             {...testProps("Submit_Button")}
           />
+          <Modal
+            visible={!isSubmitSuccess}
+            style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
+          >
+            <ActivityIndicator color={"white"} size="large" />
+          </Modal>
         </View>
       </ScrollView>
     </View>
