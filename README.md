@@ -31,3 +31,6 @@ to build are:
 1. Number of people in a given age range ( 13-18 , 18-25 and 25+ ).
 2. Number of people by localities.
 3. Average group size of people attending the event (using guests count). 4. Professionals & students count.
+
+
+Used Husky for pre-commit hooks
