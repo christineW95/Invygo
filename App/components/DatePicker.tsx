@@ -1,9 +1,10 @@
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import { testProps } from "../Utils/utils.helper";
 import { useState } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Label from "./Label";
 import Colors from "../constants/Colors";
+import IconButton from "./IconButton";
 type DatepickerPropTypes = {
   props?: object;
   value?: any;
@@ -11,7 +12,7 @@ type DatepickerPropTypes = {
   label: string;
 };
 export const Datepicker = (props: DatepickerPropTypes) => {
-  const { label, value, onChange, style } = props;
+  const { label, value, onChange } = props;
   const [show, setShow] = useState(false);
 
   const closePicker = () => {
@@ -19,6 +20,7 @@ export const Datepicker = (props: DatepickerPropTypes) => {
   };
 
   const showDatepicker = () => {
+  if(Platform.OS=='android')
     setShow(true);
   };
   return (
@@ -27,7 +29,7 @@ export const Datepicker = (props: DatepickerPropTypes) => {
       {show && (
         <RNDateTimePicker
           testID="dateTimePicker"
-          value={value}
+          value={new Date(value) }
           mode={"date"}
           is24Hour={true}
           onChange={(event, selectedDate) => {
@@ -36,16 +38,22 @@ export const Datepicker = (props: DatepickerPropTypes) => {
           }}
         />
       )}
-      <TextInput
-        onFocus={showDatepicker}
-        value={value?.toString()}
-        onChangeText={(text) => onChange(text)}
-        placeholder="Click to open picker!"
-        style={[styles.textInput, style]}
-        placeholderTextColor="grey"
-        {...testProps("Textinput_Component")}
-        {...props}
-      />
+    
+      <TouchableOpacity style={[styles.textInput,{flexDirection:'row',flex:1,justifyContent:'space-between',alignItems:'center'}]} onPress={showDatepicker}>
+        <Text>Click to pick!</Text>
+        {Platform.OS == 'android' ? <IconButton iconName="md-calendar" size={24}/> :
+        <RNDateTimePicker
+        style={{flex:1}}
+        testID="dateTimePicker"
+        value={new Date(value) }
+        mode={"date"}
+        is24Hour={true}
+        onChange={(event, selectedDate) => {
+          onChange(selectedDate);
+          closePicker();
+        }}
+      />}
+      </TouchableOpacity>
     </View>
   );
 };

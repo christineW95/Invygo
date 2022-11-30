@@ -34,7 +34,7 @@ export default function Registeration({
   const [isSubmitSuccess, setIsSubmitSuccess] = useState<boolean>(true);
   const [name, setName] = useState<string>();
   const [address, setAddress] = useState<string>();
-  const [date, setDate] = useState<Date>(new Date());
+  const [date, setDate] = useState<string>(new Date().toLocaleDateString());
   const [selectedAge, setSelectedAge] = React.useState<string>(listItems[10]);
   const [selectedNumGuests, setSelectedNumGuests] = React.useState<number>();
   const [selectedNationality, setSelectedNationality] = React.useState<NationalityItem>();
