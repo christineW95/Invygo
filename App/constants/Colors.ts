@@ -3,26 +3,23 @@ const tintColorDark = "#fff";
 
 export default {
   light: {
-    Primary:'rgba(0, 105, 205, 0.6)',
-    Secondary:'#fff',
+    Primary: "rgba(0, 105, 205, 0.6)",
+    Secondary: "#fff",
     text: "#000",
-    background: "#fff",
+    background: "rgba(255, 250, 237, 1)",
     tint: tintColorLight,
     tabIconDefault: "#000",
-    tabIconSelected: '#fff',
-    shadowColor:'rgba(0,0,0,0.1)',
-    
+    tabIconSelected: "orange",
+    shadowColor: "rgba(0,0,0,0.1)",
   },
   dark: {
-    Primary:'#fff',
-    Secondary:'rgba(0, 105, 205, 0.6)',
+    Primary: "#fff",
+    Secondary: "rgba(0, 105, 205, 0.6)",
     text: "#fff",
     background: "#000",
     tint: tintColorDark,
-    tabIconDefault: "rgba(0, 105, 205, 0.6)",
-    tabIconSelected: '#fff',
-    shadowColor:'transparent'
-
-
+    tabIconDefault: "orange",
+    tabIconSelected: "#fff",
+    shadowColor: "transparent",
   },
 };

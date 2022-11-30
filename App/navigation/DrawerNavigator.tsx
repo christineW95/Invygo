@@ -1,6 +1,4 @@
-import {
-  createDrawerNavigator,
-} from "@react-navigation/drawer";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import * as React from "react";
 
 import Reports from "../screens/Reports";
@@ -10,6 +8,7 @@ import { RootTabParamList } from "../../types";
 import { HOME_ROUTES } from "../constants/Routes";
 import { useThemeColor } from "../components/Themed";
 import Colors from "../constants/Colors";
+import { Image } from "react-native";
 
 const Drawer = createDrawerNavigator<RootTabParamList>();
 
@@ -19,14 +18,19 @@ export default function DrawerNavigator() {
       initialRouteName={HOME_ROUTES.Register}
       detachInactiveScreens={true}
       screenOptions={{
+        headerRight:()=><Image source={require('../../assets/images/logo.jpeg')} resizeMode='center' style={{alignSelf:'flex-end',justifyContent:'flex-end',width:90}}/>
+,headerStyle:{
+  backgroundColor:'orange'
+},
+
         drawerStyle: {
           backgroundColor: useThemeColor(
-            { light: Colors.light.Primary, dark: Colors.dark.Primary },
+            { light: Colors.light.background, dark: Colors.dark.background },
             ""
           ),
         },
         drawerActiveBackgroundColor: useThemeColor(
-          { light: Colors.light.shadowColor, dark: Colors.dark.shadowColor },
+          { light: Colors.light.shadowColor, dark: 'grey' },
           ""
         ),
         drawerActiveTintColor: useThemeColor(
@@ -46,7 +50,6 @@ export default function DrawerNavigator() {
       }}
     >
       <Drawer.Screen
-      
         name={HOME_ROUTES.Register}
         component={Registeration}
         options={() => ({

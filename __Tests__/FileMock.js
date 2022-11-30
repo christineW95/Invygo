@@ -1,1 +1,1 @@
-module.exports = { uri: 'test-file-stub' }
+module.exports = { uri: "test-file-stub" };

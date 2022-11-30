@@ -1,33 +1,32 @@
-import { StyleSheet } from "react-native";
+import Colors from "../constants/Colors";
+import { ScrollView, StyleSheet } from "react-native";
 
 import { Text, View } from "../components/Themed";
+import { testProps } from "../Utils/utils.helper";
 
 export default function Search() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
+    <ScrollView
+      nestedScrollEnabled={true}
+      style={styles.container}
+      {...testProps("Registeration_Container")}
+      contentContainerStyle={[styles.content, { flexGrow: 1 }]}
+    >
+
+      <View style={{ flex: 1 }}>
+      {/* <IconButton iconName="md-search" size={32} color="green" /> */}
     </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+  },
+  content: {
+    backgroundColor: Colors.light.Secondary,
     justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+    paddingVertical: 30,
   },
 });

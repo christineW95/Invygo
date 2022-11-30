@@ -1,10 +1,10 @@
 // Import your mocks here
-import React from 'react'
+import React from "react";
 
-import 'react-native-gesture-handler/jestSetup'
+import "react-native-gesture-handler/jestSetup";
 
-jest.mock('react-native-reanimated', () => {
-  const Reanimated = require('react-native-reanimated/mock');
+jest.mock("react-native-reanimated", () => {
+  const Reanimated = require("react-native-reanimated/mock");
 
   // The mock for `call` immediately calls the callback which is incorrect
   // So we override it with a no-op
@@ -12,36 +12,36 @@ jest.mock('react-native-reanimated', () => {
 
   return Reanimated;
 });
-jest.mock('@expo/vector-icons', () => {
-  return () => '';
+jest.mock("@expo/vector-icons", () => {
+  return () => "";
 });
-jest.mock('expo-font', () => {
-  return () => '';
+jest.mock("expo-font", () => {
+  return () => "";
 });
-jest.mock('expo-splash-screen', () => {
-  return () => '';
+jest.mock("expo-splash-screen", () => {
+  return () => "";
 });
-jest.mock('react-dom');
+jest.mock("react-dom");
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
-jest.mock('@react-navigation/drawer', () => {
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
+jest.mock("@react-navigation/drawer", () => {
   return {
-    current:'',
+    current: "",
     createDrawerNavigator: jest.fn().mockReturnValue({
       Navigator: (children = <></>) => <>{children}</>,
       Screen: (children = <></>) => <>{children}</>,
       drawerContent: (children = <></>) => <>{children}</>,
-      initialRouteName: '',
+      initialRouteName: "",
       screenOptions: {},
-      children: {}
-    })
-  }
-})
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
+      children: {},
+    }),
+  };
+});
+jest.mock("react-native/Libraries/Utilities/Platform", () => {
   const platform = jest.requireActual(
-    'react-native/Libraries/Utilities/Platform'
-  )
+    "react-native/Libraries/Utilities/Platform"
+  );
   return {
     ...platform,
     constants: {
@@ -49,16 +49,15 @@ jest.mock('react-native/Libraries/Utilities/Platform', () => {
       reactNativeVersion: {
         major: 0,
         minor: 65,
-        patch: 1
-      }
-    }
-  }
-})
+        patch: 1,
+      },
+    },
+  };
+});
 
-
-jest.mock('react-native-gesture-handler', () => {
+jest.mock("react-native-gesture-handler", () => {
   // eslint-disable-next-line global-require
-  const View = require('react-native/Libraries/Components/View/View')
+  const View = require("react-native/Libraries/Components/View/View");
   return {
     Swipeable: View,
     DrawerLayout: View,
@@ -87,102 +86,99 @@ jest.mock('react-native-gesture-handler', () => {
     /* Other */
     FlatList: View,
     gestureHandlerRootHOC: jest.fn(),
-    Directions: {}
-  }
-})
-jest.mock('react-native', () => {
-  const RN = jest.requireActual('react-native')
+    Directions: {},
+  };
+});
+jest.mock("react-native", () => {
+  const RN = jest.requireActual("react-native");
   RN.NativeModules.CustomApiCallModule = {
-    getRequestNoRedirectionsWithUrl: jest.fn()
-  }
+    getRequestNoRedirectionsWithUrl: jest.fn(),
+  };
   RN.NativeModules.SettingsManager = {
-    settings: { AppleLocale: 'en-US', AppleLanguages: ['en-US'] }
-  }
+    settings: { AppleLocale: "en-US", AppleLanguages: ["en-US"] },
+  };
   RN.NativeModules.ExitAppModule = {
-    exitApp: jest.fn()
-  }
-  RN.Platform = { OS: 'ios' }
+    exitApp: jest.fn(),
+  };
+  RN.Platform = { OS: "ios" };
   RN.Dimensions = {
-    get: () => ({ height: 100, width: 100 })
-  }
+    get: () => ({ height: 100, width: 100 }),
+  };
 
-  return RN
-})
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-jest.mock('@react-navigation/native', () => {
+  return RN;
+});
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
+jest.mock("react-native/Libraries/EventEmitter/NativeEventEmitter");
+jest.mock("@react-navigation/native", () => {
   return {
     useNavigation: () => ({
       navigate: jest.fn(),
       dispatch: jest.fn(),
     }),
     useRoute: () => ({
-      params: {
-        
-      },
+      params: {},
     }),
   };
-});  
-jest.mock('@react-navigation/native', () => {
+});
+jest.mock("@react-navigation/native", () => {
   return {
-    ...jest.requireActual('@react-navigation/native'),
-    current:{},
+    ...jest.requireActual("@react-navigation/native"),
+    current: {},
     useNavigation: () => ({
       navigate: jest.fn(),
       goBack: jest.fn(),
       addListener: jest.fn(),
-      dispatch: jest.fn()
+      dispatch: jest.fn(),
     }),
     useIsFocused: jest.fn(),
     useNavigationContainerRef: jest.fn(() => ({ current: {} })),
     useFocusEffect: jest.fn(),
-    useRoute: jest.fn()
-  }
-})
-jest.mock('@react-navigation/native-stack', () => {
+    useRoute: jest.fn(),
+  };
+});
+jest.mock("@react-navigation/native-stack", () => {
   return {
-    ...jest.requireActual('@react-navigation/native-stack'),
+    ...jest.requireActual("@react-navigation/native-stack"),
 
     useNavigation: () => ({
       navigate: jest.fn(),
       goBack: jest.fn(),
       addListener: jest.fn(),
-      dispatch: jest.fn()
+      dispatch: jest.fn(),
     }),
     useNavigationContainerRef: jest.fn(() => ({ current: {} })),
     useFocusEffect: jest.fn(),
-    useRoute: jest.fn()
-  }
-})
+    useRoute: jest.fn(),
+  };
+});
 
-jest.mock('@react-navigation/core', () => {
+jest.mock("@react-navigation/core", () => {
   return {
-    ...jest.requireActual('@react-navigation/core'),
+    ...jest.requireActual("@react-navigation/core"),
     useNavigationState: jest.fn(),
     useRoute: () => ({
-      params: {}
+      params: {},
     }),
     useNavigation: () => ({
       navigate: jest.fn(),
       goBack: jest.fn(),
       addListener: jest.fn(),
-      dispatch: jest.fn()
+      dispatch: jest.fn(),
     }),
-    useFocusEffect: jest.fn()
-  }
-})
+    useFocusEffect: jest.fn(),
+  };
+});
 
-
-jest.mock('react', () => {
-  const originReact = jest.requireActual('react')
-  const mUseRef = jest.fn()
+jest.mock("react", () => {
+  const originReact = jest.requireActual("react");
+  const mUseRef = jest.fn();
   return {
     ...originReact,
-    useRef: mUseRef
-  }
-})
+    useRef: mUseRef,
+  };
+});
 
 jest.mock(
-  'react-native/Libraries/Components/Touchable/TouchableOpacity',
-  () => 'TouchableOpacity'
-)
+  "react-native/Libraries/Components/Touchable/TouchableOpacity",
+  () => "TouchableOpacity"
+);
