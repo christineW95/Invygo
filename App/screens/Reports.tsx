@@ -9,7 +9,7 @@ import NationalitiesReport from "../components/NationalityReport";
 
 export default function Reports() {
   return (
-    <View style={{ flex: 1, backgroundColor: Colors.light.Secondary }}>
+    <View style={styles.container}>
       <ScrollView
         nestedScrollEnabled={true}
         style={styles.container}
@@ -25,9 +25,7 @@ export default function Reports() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: { flex: 1, backgroundColor: Colors.light.Secondary },
   title: {
     fontSize: 20,
     fontWeight: "bold",

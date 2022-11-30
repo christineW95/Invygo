@@ -25,12 +25,12 @@ import { submitUser } from "../services/SubmitUser";
 import { User } from "../Interfaces/User";
 import { HOME_ROUTES } from "../constants/Routes";
 import { Modal } from "react-native-paper";
+import guests from "../factory/guests.factory";
 
 export default function Registeration({
   navigation,
 }: RootTabScreenProps<"Registeration">) {
   const listItems = generateAgeArray();
-  const guestsList = [0, 1, 2];
   const [isSubmitSuccess, setIsSubmitSuccess] = useState<boolean>(true);
   const [name, setName] = useState<string>();
   const [address, setAddress] = useState<string>();
@@ -60,7 +60,7 @@ export default function Registeration({
         selectedProfession == ProfessionTypes.STUDENT ? "checked" : "unchecked",
     },
   ];
-  const { loading, nationalities } = useGetNationalities(
+  const { nationalities } = useGetNationalities(
     "https://api.first.org/data/v1/countries"
   );
 
@@ -70,6 +70,10 @@ export default function Registeration({
   const onChangeDate = (selectedDate: Date) => {
     setDate(selectedDate);
   };
+  const onAgeSelect = (index: number) => setSelectedAge(listItems[index]);
+  const onNationalitySelect = (nationality: NationalityItem) =>
+    setSelectedNationality(nationality);
+  const onGuestsSelect = (index: number) => setSelectedNumGuests(guests[index]);
   const onPress = async () => {
     setIsSubmitSuccess(false);
     const user: User = {
@@ -89,19 +93,20 @@ export default function Registeration({
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: Colors.light.Secondary }}>
+    <View style={styles.wrapper}>
       <Image
         source={require("../../assets/images/logo.jpeg")}
         resizeMode="center"
-        style={{ alignSelf: "center", justifyContent: "center" }}
+        style={styles.logo}
+        {...testProps("Logo_Component")}
       />
       <ScrollView
         nestedScrollEnabled={true}
         style={styles.container}
         {...testProps("Registeration_Container")}
-        contentContainerStyle={[styles.content, { flexGrow: 1 }]}
+        contentContainerStyle={styles.content}
       >
-        <View style={{ flex: 1 }}>
+        <View style={styles.contentWrapper}>
           <CustomTextInput
             value={name}
             label={"Name"}
@@ -114,7 +119,7 @@ export default function Registeration({
             label={"Age"}
             placeholder={"Enter your age"}
             listItems={listItems}
-            onSelect={(index: number) => setSelectedAge(listItems[index])}
+            onSelect={onAgeSelect}
             selected={selectedAge}
           />
 
@@ -128,9 +133,7 @@ export default function Registeration({
           <NationalitiesDropdown
             label={"Locality"}
             listItems={nationalities}
-            onSelect={(nationality: NationalityItem) =>
-              setSelectedNationality(nationality)
-            }
+            onSelect={onNationalitySelect}
             selected={selectedNationality}
           />
           <CustomTextInput
@@ -145,10 +148,8 @@ export default function Registeration({
           <AgePicker
             label={"Number of Guests"}
             placeholder={"Select number of guests"}
-            listItems={guestsList}
-            onSelect={(index: number) =>
-              setSelectedNumGuests(guestsList[index])
-            }
+            listItems={guests}
+            onSelect={onGuestsSelect}
             selected={selectedNumGuests}
           />
           <Button
@@ -157,10 +158,7 @@ export default function Registeration({
             color={"orange"}
             {...testProps("Submit_Button")}
           />
-          <Modal
-            visible={!isSubmitSuccess}
-            style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
-          >
+          <Modal visible={!isSubmitSuccess} style={styles.loadingModal}>
             <ActivityIndicator color={"white"} size="large" />
           </Modal>
         </View>
@@ -170,12 +168,17 @@ export default function Registeration({
 }
 
 const styles = StyleSheet.create({
+  wrapper: { flex: 1, backgroundColor: Colors.light.Secondary },
   container: {
     flex: 1,
   },
+  logo: { alignSelf: "center", justifyContent: "center" },
   content: {
     backgroundColor: Colors.light.Secondary,
     justifyContent: "center",
     paddingVertical: 30,
+    flexGrow: 1,
   },
+  loadingModal: { alignItems: "center", justifyContent: "center", flex: 1 },
+  contentWrapper: { flex: 1 },
 });

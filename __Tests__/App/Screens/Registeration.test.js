@@ -1,8 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
-import Registeration from "../../../screens/Registeration";
+import Registeration from "./../../App/../../App/screens/Registeration";
 
 describe("Testing react navigation", () => {
+  
   it("navigates on button press", () => {
     const push = jest.fn();
     const { getByText } = render(<Registeration navigation={{ push }} />);

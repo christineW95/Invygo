@@ -36,7 +36,7 @@ export default function Search({ navigation }: any) {
       {...testProps("Registeration_Container")}
       contentContainerStyle={styles.content}
     >
-      <View style={{ flex: 1, paddingVertical: 30 }}>
+      <View style={styles.wrapper}>
         <ScrollableTextInput
           value={query}
           onChangeText={onChangeText}
@@ -55,6 +55,7 @@ export default function Search({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
+  wrapper:{ flex: 1, paddingVertical: 30 },
   container: {
     flex: 1,
     backgroundColor: Colors.light.Secondary,

@@ -21,132 +21,70 @@ export default function Details({ navigation, route }) {
       {...testProps("Registeration_Container")}
       contentContainerStyle={styles.content}
     >
-      <View style={{ flex: 1 }}>
+      <View style={styles.contentWrapper}>
         <Image
           source={require("../../assets/images/person.webp")}
-          style={{
-            resizeMode: "center",
-            alignSelf: "center",
-            backgroundColor: "orange",
-          }}
+          style={styles.img}
         />
         {/* content */}
         <View style={{ padding: 20 }}>
           {/* header */}
           <View
-            style={{
-              flexDirection: "row",
-              flex: 1,
-              justifyContent: "space-evenly",
-            }}
+            style={styles.header}
           >
             <View
-              style={{
-                backgroundColor: "green",
-                flex: 1,
-                alignItems: "center",
-                borderBottomLeftRadius: 15,
-                borderTopLeftRadius: 15,
-                padding: 15,
-              }}
+              style={styles.leftWrapper}
             >
               <Text
-                style={{ color: "white", fontSize: 20, fontWeight: "bold" }}
+                style={[styles.title,{color:'white'}]}
               >
                 Profession
               </Text>
               <Text
-                style={{ color: "white", fontSize: 16, fontWeight: "bold" }}
+                style={[styles.subtitle,{color:'white'}]}
               >
                 {profession}
               </Text>
             </View>
             <View
-              style={{
-                backgroundColor: "lightgreen",
-                flex: 1,
-                alignItems: "center",
-                borderBottomRightRadius: 15,
-                borderTopRightRadius: 15,
-                padding: 15,
-              }}
+              style={styles.rightWrapper}
             >
-              <Text style={{ fontSize: 20, fontWeight: "bold" }}>Age</Text>
-              <Text style={{ fontSize: 16, fontWeight: "bold" }}>{age}</Text>
+              <Text style={styles.title}>Age</Text>
+              <Text style={styles.subtitle}>{age}</Text>
             </View>
           </View>
 
           {/* details */}
 
           <View
-            style={{
-              backgroundColor: Colors.light.background,
-              padding: 20,
-              marginTop: 10,
-              borderRadius: 15,
-              shadowColor: "grey",
-              shadowOffset: { width: 0, height: 0 }, // change this for more shadow
-              shadowOpacity: 0.4,
-              shadowRadius: 3,
-              elevation: 5,
-            }}
+            style={styles.itemWrapper}
           >
-            <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+            <Text style={styles.title}>
               Nationality
             </Text>
 
             <Text>{nationality}</Text>
           </View>
           <View
-            style={{
-              backgroundColor: Colors.light.background,
-              padding: 20,
-              marginTop: 10,
-              borderRadius: 15,
-              shadowColor: "grey",
-              shadowOffset: { width: 0, height: 0 }, // change this for more shadow
-              shadowOpacity: 0.4,
-              shadowRadius: 3,
-              elevation: 5,
-            }}
+            style={styles.itemWrapper}
           >
-            <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+            <Text style={styles.title}>
               Date of Birth
             </Text>
 
             <Text>{dob}</Text>
           </View>
           <View
-            style={{
-              backgroundColor: Colors.light.background,
-              padding: 20,
-              marginTop: 10,
-              borderRadius: 15,
-              shadowColor: "grey",
-              shadowOffset: { width: 0, height: 0 }, // change this for more shadow
-              shadowOpacity: 0.4,
-              shadowRadius: 3,
-              elevation: 5,
-            }}
+            style={styles.itemWrapper}
           >
-            <Text style={{ fontSize: 20, fontWeight: "bold" }}>Address</Text>
+            <Text style={styles.title}>Address</Text>
 
             <Text>{address}</Text>
           </View>
           <View
-            style={{
-              backgroundColor: Colors.light.background,
-              padding: 20,
-              marginTop: 10,
-              borderRadius: 15,
-              shadowColor: "grey",
-              shadowOffset: { width: 0, height: 0 }, // change this for more shadow
-              shadowOpacity: 0.4,
-              shadowRadius: 3,
-              elevation: 5,
-            }}
+            style={styles.itemWrapper}
           >
-            <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+            <Text style={styles.title}>
               Number of Guests
             </Text>
 
@@ -159,10 +97,50 @@ export default function Details({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+  itemWrapper:{
+    backgroundColor: Colors.light.background,
+    padding: 20,
+    marginTop: 10,
+    borderRadius: 15,
+    shadowColor: "grey",
+    shadowOffset: { width: 0, height: 0 }, // change this for more shadow
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
+    elevation: 5,
+  },
+  rightWrapper:{
+    backgroundColor: "lightgreen",
+    flex: 1,
+    alignItems: "center",
+    borderBottomRightRadius: 15,
+    borderTopRightRadius: 15,
+    padding: 15,
+  },
+  leftWrapper:{
+    backgroundColor: "green",
+    flex: 1,
+    alignItems: "center",
+    borderBottomLeftRadius: 15,
+    borderTopLeftRadius: 15,
+    padding: 15,
+  },
+  subtitle:{fontSize: 16, fontWeight: "bold" },
+  img:{
+    resizeMode: "center",
+    alignSelf: "center",
+    backgroundColor: "orange",
+  },
+  title:{fontSize:20,fontWeight:'bold'},
+  header:{
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "space-evenly",
+  },
   container: {
     flex: 1,
     backgroundColor: Colors.light.Secondary,
   },
+  contentWrapper: { flex: 1 },
   content: {
     backgroundColor: Colors.light.Secondary,
     justifyContent: "center",
