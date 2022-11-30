@@ -8,12 +8,12 @@ import { useState } from "react";
 import { generateAgeArray } from "../factory/age.factory";
 import React from "react";
 import RadioButtonGroup from "../components/RadiobuttonGroup";
-import ProfessionTypes from "../factory/profession.factory";
 import { useGetNationalities } from "../hooks/useNationalities";
 import NationalitiesDropdown from "../components/NationalitiesPicker";
 import { NationalityItem } from "../Interfaces/Nationalities";
 import AgePicker from "../components/AgePicker";
 import { Datepicker } from "../components/DatePicker";
+import ProfessionTypes from "../factory/profession.factory";
 
 export default function Registeration({
   navigation,

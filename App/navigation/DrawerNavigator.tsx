@@ -9,6 +9,7 @@ import { HOME_ROUTES } from "../constants/Routes";
 import { useThemeColor } from "../components/Themed";
 import Colors from "../constants/Colors";
 import { Image } from "react-native";
+import Details from "../screens/Details";
 
 const Drawer = createDrawerNavigator<RootTabParamList>();
 
@@ -18,10 +19,20 @@ export default function DrawerNavigator() {
       initialRouteName={HOME_ROUTES.Register}
       detachInactiveScreens={true}
       screenOptions={{
-        headerRight:()=><Image source={require('../../assets/images/logo.jpeg')} resizeMode='center' style={{alignSelf:'flex-end',justifyContent:'flex-end',width:90}}/>
-,headerStyle:{
-  backgroundColor:'orange'
-},
+        headerRight: () => (
+          <Image
+            source={require("../../assets/images/logo.jpeg")}
+            resizeMode="center"
+            style={{
+              alignSelf: "flex-end",
+              justifyContent: "flex-end",
+              width: 90,
+            }}
+          />
+        ),
+        headerStyle: {
+          backgroundColor: "orange",
+        },
 
         drawerStyle: {
           backgroundColor: useThemeColor(
@@ -30,7 +41,7 @@ export default function DrawerNavigator() {
           ),
         },
         drawerActiveBackgroundColor: useThemeColor(
-          { light: Colors.light.shadowColor, dark: 'grey' },
+          { light: Colors.light.shadowColor, dark: "grey" },
           ""
         ),
         drawerActiveTintColor: useThemeColor(

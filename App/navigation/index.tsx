@@ -15,8 +15,9 @@ import { ColorSchemeName } from "react-native";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { RootStackParamList } from "../../types";
-import { STACK_ROUTES } from "../constants/Routes";
+import { HOME_ROUTES, STACK_ROUTES } from "../constants/Routes";
 import DrawerNavigator from "./DrawerNavigator";
+import Details from "../screens/Details";
 
 export default function Navigation({
   colorScheme,
@@ -32,10 +33,7 @@ export default function Navigation({
   );
 }
 
-/**
- * A root stack navigator is often used for displaying modals on top of all other content.
- * https://reactnavigation.org/docs/modal
- */
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function RootNavigator() {
@@ -50,6 +48,11 @@ export function RootNavigator() {
         name={STACK_ROUTES.NotFound}
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
+      />
+      <Stack.Screen
+        name={HOME_ROUTES.Details}
+        component={Details}
+        options={({navigation,route})=> ({ title: route.params.user.name,headerStyle:{backgroundColor:'orange'},headerTitleStyle:{color:'#fff',fontSize:24,fontWeight:'bold'}})}
       />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />

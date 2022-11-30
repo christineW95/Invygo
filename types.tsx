@@ -31,6 +31,8 @@ export type RootTabParamList = {
   Reports: undefined;
 };
 
+
+
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
   CompositeScreenProps<
     DrawerScreenProps<RootTabParamList, Screen>,
