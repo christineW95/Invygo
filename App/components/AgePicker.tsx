@@ -30,6 +30,7 @@ const DropDown = (props: DropDownTypes) => {
       data={listItems}
       keyExtractor={({ item, index }) => index}
       style={{ maxHeight: 200 }}
+      {...testProps('List_Component')}
       renderItem={({ item, index }) => (
         <List.Item
           {...testProps("AccordionItem_Component")}

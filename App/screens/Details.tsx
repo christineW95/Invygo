@@ -3,7 +3,8 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { testProps } from "../Utils/utils.helper";
 import React from "react";
-import { User } from "App/Interfaces/User";
+import { User } from "../Interfaces/User";
+import DetailsCard from "../components/DetailsCard";
 export default function Details({ navigation, route }) {
   const { user } = route?.params;
   const {
@@ -55,41 +56,11 @@ export default function Details({ navigation, route }) {
           </View>
 
           {/* details */}
-
-          <View
-            style={styles.itemWrapper}
-          >
-            <Text style={styles.title}>
-              Nationality
-            </Text>
-
-            <Text>{nationality}</Text>
-          </View>
-          <View
-            style={styles.itemWrapper}
-          >
-            <Text style={styles.title}>
-              Date of Birth
-            </Text>
-
-            <Text>{dob}</Text>
-          </View>
-          <View
-            style={styles.itemWrapper}
-          >
-            <Text style={styles.title}>Address</Text>
-
-            <Text>{address}</Text>
-          </View>
-          <View
-            style={styles.itemWrapper}
-          >
-            <Text style={styles.title}>
-              Number of Guests
-            </Text>
-
-            <Text>{numOfGuests}</Text>
-          </View>
+          <DetailsCard label="Nationality" value={nationality}/>
+          <DetailsCard label="Date of Birth" value={dob}/>
+          <DetailsCard label="Address" value={address}/>
+          <DetailsCard label=" Number of Guests" value={numOfGuests}/>
+         
         </View>
       </View>
     </ScrollView>
@@ -97,17 +68,7 @@ export default function Details({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  itemWrapper:{
-    backgroundColor: Colors.light.background,
-    padding: 20,
-    marginTop: 10,
-    borderRadius: 15,
-    shadowColor: "grey",
-    shadowOffset: { width: 0, height: 0 }, // change this for more shadow
-    shadowOpacity: 0.4,
-    shadowRadius: 3,
-    elevation: 5,
-  },
+ 
   rightWrapper:{
     backgroundColor: "lightgreen",
     flex: 1,
@@ -130,7 +91,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "orange",
   },
-  title:{fontSize:20,fontWeight:'bold'},
   header:{
     flexDirection: "row",
     flex: 1,

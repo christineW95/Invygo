@@ -9,8 +9,9 @@ import React from "react";
 import ResultList from "../components/SearchResultsList";
 import { SearchBy } from "../Helpers/search.helper";
 import { HOME_ROUTES } from "../constants/Routes";
-import { getAllUsers } from "../services/GetAllUsers";
+import {  getData } from "../services/GetAllUsers";
 import { User } from "../Interfaces/User";
+import { Key, MOCK_BASE_URL } from "../services/config";
 
 export default function Search({ navigation }: any) {
   const [query, setQuery] = useState<string>("");
@@ -18,7 +19,7 @@ export default function Search({ navigation }: any) {
   const [initialData, setInitialData] = useState<Array<User>>();
 
   useEffect(() => {
-    getAllUsers().then((res) => {
+    getData(`${MOCK_BASE_URL}key=${Key}`).then((res) => {
       setInitialData(res);
     });
   }, []);

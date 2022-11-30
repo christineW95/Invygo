@@ -37,11 +37,8 @@ export default function Registeration({
   const [date, setDate] = useState<Date>(new Date());
   const [selectedAge, setSelectedAge] = React.useState<string>(listItems[10]);
   const [selectedNumGuests, setSelectedNumGuests] = React.useState<number>();
-  const [selectedNationality, setSelectedNationality] =
-    React.useState<NationalityItem>();
-  const [selectedProfession, setSelectedProfession] = React.useState<string>(
-    ProfessionTypes.EMPLOYEE
-  );
+  const [selectedNationality, setSelectedNationality] = React.useState<NationalityItem>();
+  const [selectedProfession, setSelectedProfession] = React.useState<string>( ProfessionTypes.EMPLOYEE );
   const ProfessionList = [
     {
       label: ProfessionTypes.EMPLOYEE,
@@ -60,19 +57,13 @@ export default function Registeration({
         selectedProfession == ProfessionTypes.STUDENT ? "checked" : "unchecked",
     },
   ];
-  const { nationalities } = useGetNationalities(
-    "https://api.first.org/data/v1/countries"
-  );
+  const { nationalities } = useGetNationalities("https://api.first.org/data/v1/countries" );
 
-  //TODO:don't allow whitespaces
   const onChangeText = (text: string) => setName(text);
   const onChangeAddress = (text: string) => setAddress(text);
-  const onChangeDate = (selectedDate: Date) => {
-    setDate(selectedDate);
-  };
+  const onChangeDate = (selectedDate: Date) => setDate(selectedDate);
   const onAgeSelect = (index: number) => setSelectedAge(listItems[index]);
-  const onNationalitySelect = (nationality: NationalityItem) =>
-    setSelectedNationality(nationality);
+  const onNationalitySelect = (nationality: NationalityItem) => setSelectedNationality(nationality);
   const onGuestsSelect = (index: number) => setSelectedNumGuests(guests[index]);
   const onPress = async () => {
     setIsSubmitSuccess(false);
@@ -134,8 +125,7 @@ export default function Registeration({
             label={"Locality"}
             listItems={nationalities}
             onSelect={onNationalitySelect}
-            selected={selectedNationality}
-          />
+            selected={selectedNationality}          />
           <CustomTextInput
             value={address}
             label={"Address"}

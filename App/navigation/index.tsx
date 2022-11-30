@@ -47,7 +47,7 @@ export function RootNavigator() {
         name={HOME_ROUTES.Details}
         component={Details}
         options={({ navigation, route }) => ({
-          title: route.params.user.name,
+          title: route?.params?.user?.name || '',
           headerStyle: { backgroundColor: "orange" },
           headerTitleStyle: { color: "#fff", fontSize: 24, fontWeight: "bold" },
         })}

@@ -1,22 +1,21 @@
 import mapUsersList from "../Mappers/UsersMapper";
 import axios from "axios";
-
-const getAllUsers = async (): Promise<any> => {
+import { Key, MOCK_BASE_URL } from "./config";
+const getData = async (url:string): Promise<any> => {
   try {
     const { data, status } = await axios.get(
-      "https://my.api.mockaroo.com/invygo.json?key=f2ac2250"
+      url
     );
-    if (status == 200) {
-      return mapUsersList(data);
-    }
+    if (status == 200) return mapUsersList(data);
   } catch (error) {
     return Promise.reject(error);
   }
 };
+
 const getUserByName = async (name: string): Promise<any> => {
   try {
     const { data, status } = await axios.get(
-      `https://my.api.mockaroo.com/invygo.json?name=${name}&key=f2ac2250`
+      `${MOCK_BASE_URL}name=${name}&key=${Key}`
     );
     if (status == 200) return mapUsersList(data);
   } catch (error) {
@@ -27,11 +26,11 @@ const getUserByName = async (name: string): Promise<any> => {
 const getUserByNationality = async (nationality: string): Promise<any> => {
   try {
     const { data, status } = await axios.get(
-      `https://my.api.mockaroo.com/invygo.json?nationality=${nationality}&key=f2ac2250`
+      `${MOCK_BASE_URL}nationality=${nationality}&key=${Key}`
     );
     if (status == 200) return mapUsersList(data);
   } catch (error) {
     return Promise.reject(error);
   }
 };
-export { getAllUsers, getUserByName, getUserByNationality };
+export { getData, getUserByName, getUserByNationality };

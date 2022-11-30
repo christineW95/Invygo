@@ -13,7 +13,7 @@ type DropdownTypes = {
   listItems: Array<any>;
   selected?: NationalityItem;
   onSelect: Function;
-  style: object;
+  style?: object;
 };
 
 const NationalitiesDropdown = (props: DropdownTypes) => {
