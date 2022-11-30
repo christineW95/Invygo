@@ -13,7 +13,7 @@ const UserItemSchema: StrictSchema<User> = {
 };
 const mapUsersList = (input: Array<any>) =>
   input
-    ?.map((element: User, index: number) =>
+    ?.map((element: User) =>
       morphism(UserItemSchema, { ...element })
     )
    
