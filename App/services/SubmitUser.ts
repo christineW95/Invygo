@@ -9,7 +9,7 @@ const submitUser = async (user: User): Promise<any> => {
       status,
     } = await axios.post(Register.submit, user);
     if (status == 200) {
-      return {success};
+      return { success };
     }
   } catch (error) {
     return Promise.reject(error);

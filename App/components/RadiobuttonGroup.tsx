@@ -30,14 +30,13 @@ const RadioButtonGroup = (props: RadioButtonGroupPropTypes) => {
 
 export default RadioButtonGroup;
 const styles = StyleSheet.create({
-
   icon: { tintColor: "purple" },
   wrapper: {
     margin: 30,
   },
   container: {
     marginVertical: 10,
-    backgroundColor:Colors.light.background,
+    backgroundColor: Colors.light.background,
 
     borderRadius: 15,
     shadowColor: "grey",

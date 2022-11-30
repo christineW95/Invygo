@@ -1,5 +1,5 @@
 import Colors from "../constants/Colors";
-import {  ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 
 import { View } from "../components/Themed";
 import { testProps } from "../Utils/utils.helper";
@@ -12,7 +12,7 @@ import { HOME_ROUTES } from "../constants/Routes";
 import { getAllUsers } from "../services/GetAllUsers";
 import { User } from "../Interfaces/User";
 
-export default function Search({navigation}: any) {
+export default function Search({ navigation }: any) {
   const [query, setQuery] = useState<string>("");
   const [results, setResults] = useState<Array<any>>();
   const [initialData, setInitialData] = useState<Array<User>>();
@@ -23,19 +23,19 @@ export default function Search({navigation}: any) {
     });
   }, []);
 
-  const onChangeText =  (text: string) => {
+  const onChangeText = (text: string) => {
     setQuery(text);
-    if (text !== null)
-      setResults( SearchBy(text.toLowerCase(), initialData));
+    if (text !== null) setResults(SearchBy(text.toLowerCase(), initialData));
     else setResults([]);
   };
- 
+
   return (
     <ScrollView
       nestedScrollEnabled={true}
       style={styles.container}
       {...testProps("Registeration_Container")}
-      contentContainerStyle={styles.content}>
+      contentContainerStyle={styles.content}
+    >
       <View style={{ flex: 1, paddingVertical: 30 }}>
         <ScrollableTextInput
           value={query}
@@ -44,12 +44,11 @@ export default function Search({navigation}: any) {
         />
         <ResultList
           result={results}
-          onPress={(item:User) =>
+          onPress={(item: User) =>
             navigation.navigate(HOME_ROUTES.Details, { user: item })
           }
           initial={initialData}
         />
-       
       </View>
     </ScrollView>
   );
@@ -63,6 +62,6 @@ const styles = StyleSheet.create({
   content: {
     backgroundColor: Colors.light.Secondary,
     justifyContent: "center",
-    flexGrow: 1
+    flexGrow: 1,
   },
 });

@@ -1,12 +1,10 @@
-
 export interface User {
-    name: string;
-    id: number;
-    address:string
-    nationality:string
-    age:string
-    dob:string
-    profession:string
-    numOfGuests:string
-  }
-  
+  name: string;
+  id: number;
+  address: string;
+  nationality: string;
+  age: string;
+  dob: string;
+  profession: string;
+  numOfGuests: string;
+}

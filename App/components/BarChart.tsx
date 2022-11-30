@@ -1,8 +1,5 @@
 import { Dimensions, StyleSheet, View } from "react-native";
-import {
-  BarChart,
-  
-} from "react-native-chart-kit";
+import { BarChart } from "react-native-chart-kit";
 
 type ChartPropTypes = {};
 
@@ -11,22 +8,23 @@ const BarGraph = (props: ChartPropTypes) => {
     <View style={styles.wrapper}>
       <BarChart
         data={{
-          labels: ["13", "14", "15", "16", "17", "18"],
+          labels: props.labels,
           datasets: [
             {
-              data: [20, 50, 80, 100, Math.random() * 100],
+              data: props.data,
             },
           ],
         }}
-        width={Dimensions.get("screen").width-10} 
+        width={Dimensions.get("screen").width - 10}
         height={220}
-        yAxisSuffix="Y"
-        yAxisInterval={1} 
+        yAxisSuffix=" Per"
+        yAxisInterval={1}
         chartConfig={{
           backgroundColor: "#e26a00",
           backgroundGradientFrom: "#fb8c00",
           backgroundGradientTo: "#ffa726",
-          decimalPlaces: 0, 
+          decimalPlaces: 0,
+          width: 5,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           style: {
@@ -42,7 +40,7 @@ const BarGraph = (props: ChartPropTypes) => {
         style={{
           marginVertical: 8,
           borderRadius: 10,
-          padding:5
+          padding: 5,
         }}
       />
     </View>
@@ -52,6 +50,6 @@ const BarGraph = (props: ChartPropTypes) => {
 export default BarGraph;
 const styles = StyleSheet.create({
   wrapper: {
-    flex:1,
+    flex: 1,
   },
 });

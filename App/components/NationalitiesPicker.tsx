@@ -69,7 +69,7 @@ const NationalitiesDropdown = (props: DropdownTypes) => {
 export default NationalitiesDropdown;
 const styles = StyleSheet.create({
   accordion: {
-    backgroundColor:Colors.light.background,
+    backgroundColor: Colors.light.background,
     borderRadius: 10,
     paddingVertical: 12,
   },

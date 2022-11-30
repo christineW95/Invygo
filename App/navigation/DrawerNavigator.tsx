@@ -78,7 +78,7 @@ export default function DrawerNavigator() {
         name={HOME_ROUTES.Graphs}
         component={Reports}
         options={{
-          title:HOME_ROUTES.Graphs,
+          title: HOME_ROUTES.Graphs,
         }}
       />
     </Drawer.Navigator>

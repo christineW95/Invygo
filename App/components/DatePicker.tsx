@@ -39,7 +39,7 @@ export const Datepicker = (props: DatepickerPropTypes) => {
       <TextInput
         onFocus={showDatepicker}
         value={value?.toString()}
-        onChangeText={(text)=>onChange(text)}
+        onChangeText={(text) => onChange(text)}
         placeholder="Click to open picker!"
         style={[styles.textInput, style]}
         placeholderTextColor="grey"

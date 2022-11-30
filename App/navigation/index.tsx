@@ -33,7 +33,6 @@ export default function Navigation({
   );
 }
 
-
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function RootNavigator() {
@@ -52,7 +51,11 @@ export function RootNavigator() {
       <Stack.Screen
         name={HOME_ROUTES.Details}
         component={Details}
-        options={({navigation,route})=> ({ title: route.params.user.name,headerStyle:{backgroundColor:'orange'},headerTitleStyle:{color:'#fff',fontSize:24,fontWeight:'bold'}})}
+        options={({ navigation, route }) => ({
+          title: route.params.user.name,
+          headerStyle: { backgroundColor: "orange" },
+          headerTitleStyle: { color: "#fff", fontSize: 24, fontWeight: "bold" },
+        })}
       />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
