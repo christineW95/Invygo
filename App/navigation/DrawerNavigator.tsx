@@ -9,7 +9,6 @@ import { HOME_ROUTES } from "../constants/Routes";
 import { useThemeColor } from "../components/Themed";
 import Colors from "../constants/Colors";
 import { Image } from "react-native";
-import Details from "../screens/Details";
 
 const Drawer = createDrawerNavigator<RootTabParamList>();
 

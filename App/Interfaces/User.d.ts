@@ -1,4 +1,3 @@
-import { NationalityItem } from "./Nationalities";
 
 export interface User {
     name: string;

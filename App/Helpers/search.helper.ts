@@ -1,6 +1,7 @@
-import users from "../constants/users"
+import { User } from "App/Interfaces/User";
 
-const SearchBy = (key:string,query:string) => {
-    return users.users.filter((entry: Object) => entry[key].includes(query))
-  }
-  export {SearchBy}
+const SearchBy =  (query: string,users:Array<User>) => {
+  return users.filter((entry: User) => entry.name.toLowerCase().includes(query) || entry.nationality.toLowerCase().includes(query))
+
+};
+export { SearchBy };
