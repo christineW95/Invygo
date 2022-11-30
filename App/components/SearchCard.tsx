@@ -7,22 +7,18 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 
 type CardProps = {
-  id: number
-  contentType: string
-  title: string
-  duration: string
-  iconURL: string
-  imageURL: string
+  name: string
+  nationality: string
   onPress:Function
 }
-function SearchCard(props: CardProps) {
+function SearchCard({name,onPress,nationality}: CardProps) {
   
 
   return (
     <TouchableOpacity
       {...testProps('Search_Card_Wrapper')}
       style={styles.container}
-      onPress={props.onPress}
+      onPress={onPress}
       >
       <View style={styles.left}>
         {/* image */}
@@ -34,8 +30,8 @@ function SearchCard(props: CardProps) {
           {...testProps('Card_Image')}
         />
         <View style={styles.contentStyle}>
-            <Text {...testProps('Card_Type_Text')} style={styles.typeStyle}>title</Text>
-            <Text {...testProps('Card_Title_Text')} style={styles.titleStyle}>title</Text>
+            <Text {...testProps('Card_Type_Text')} style={styles.typeStyle}>{name}</Text>
+            <Text {...testProps('Card_Title_Text')} style={styles.titleStyle}>{nationality}</Text>
           
          
         </View>
@@ -62,11 +58,7 @@ const styles =
       justifyContent: 'space-around',
       flex: 1
     },
-    icon: {
-      width:   (40),
-      height:   (30),
-      borderRadius:   (6)
-    },
+   
     cardImage: {
       width:   (62),
       height:   (62),
@@ -79,17 +71,13 @@ const styles =
     },
     typeStyle: {
       fontWeight: '600',
+      fontSize:24,
       color: 'purple'
     },
     titleStyle: {
       fontWeight: '700',
-      flexDirection: 'row'
     },
-    rightStyle: {
-      flex: 1,
-      alignItems: 'center',
-      bottom:   (10)
-    },
+   
   
     
   })
