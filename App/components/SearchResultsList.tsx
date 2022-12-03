@@ -2,7 +2,7 @@ import { testProps } from "../Utils/utils.helper";
 import React from "react";
 import { ActivityIndicator, FlatList, Text } from "react-native";
 import SearchCard from "./SearchCard";
-import { User } from "App/Interfaces/User";
+import { User } from "../../App/Interfaces/User";
 
 type ResultProps = {
   result: Array<User>;
@@ -36,7 +36,6 @@ function ResultList({ result, onPress, initial }: ResultProps) {
         indicatorStyle={"white"}
         maxToRenderPerBatch={10}
         initialNumToRender={10}
-        showsVerticalScrollIndicator={true}
         style={{ margin: 20 }}
         {...testProps("Search_Result_FlatList")}
       />

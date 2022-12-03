@@ -1,6 +1,6 @@
 import { getNationalities } from "../services/GetNationalities";
 import { useState, useEffect, useRef } from "react";
-import { NationalityItem } from "App/Interfaces/Nationalities";
+import { NationalityItem } from "../../App/Interfaces/Nationalities";
 
 const useGetNationalities = (url: string) => {
   const cache = useRef({});

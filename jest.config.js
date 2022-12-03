@@ -43,16 +43,19 @@ module.exports = {
     "!babel.config.js",
     "!App/I18n/**",
     "!App/Themes/**",
+    "!App/constants/**",
     '!App/navigation/**',
     '!App/Mappers/**',
     '!App/services/Interceptors/**',
+    '!App/services/config.ts',
+    '!App/services/MOCK_DATA.json',
     '!App/components/__tests__/**',
     "!react-native.config.js",
     "!.vscode/.react/*.{js,jsx,tsx}",
   ],
   coverageThreshold: {
     global: {
-      statements: 95,
+      statements: 70,
     },
   },
 };

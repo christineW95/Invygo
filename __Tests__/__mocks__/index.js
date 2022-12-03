@@ -43,7 +43,19 @@ jest.mock('axios', () => {
       }
     })),
     get: jest.fn(),
-    post: jest.fn(),
+    post: jest.fn((url) => {
+      if (url === "https://submit.free.beeceptor.com/api/submit") {
+          return Promise.resolve({
+              data: {success:true},
+              status:200
+          });
+      }
+      if (url === '/something2') {
+          return Promise.resolve({
+              data: 'data2'
+          });
+      }
+  }),
     interceptors: {
       request: { use: jest.fn(), eject: jest.fn() },
       response: { use: jest.fn(), eject: jest.fn() }
@@ -182,6 +194,9 @@ jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
 jest.mock("react-native/Libraries/EventEmitter/NativeEventEmitter");
 jest.mock("@react-navigation/native", () => {
   return {
+    navigation:{
+      navigate:jest.fn()
+    },
     useNavigation: () => ({
       navigate: jest.fn(),
       dispatch: jest.fn(),

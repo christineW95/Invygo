@@ -19,11 +19,12 @@ export default function Details({ navigation, route }) {
     <ScrollView
       nestedScrollEnabled={true}
       style={styles.container}
-      {...testProps("Registeration_Container")}
+      {...testProps("Details_Container")}
       contentContainerStyle={styles.content}
     >
       <View style={styles.contentWrapper}>
         <Image
+        {...testProps('Logo')}
           source={require("../../assets/images/person.webp")}
           style={styles.img}
         />
@@ -42,6 +43,7 @@ export default function Details({ navigation, route }) {
                 Profession
               </Text>
               <Text
+              {...testProps('Profession_value')}
                 style={[styles.subtitle,{color:'white'}]}
               >
                 {profession}
@@ -51,7 +53,8 @@ export default function Details({ navigation, route }) {
               style={styles.rightWrapper}
             >
               <Text style={styles.title}>Age</Text>
-              <Text style={styles.subtitle}>{age}</Text>
+             
+              <Text  {...testProps('Age_value')} style={styles.subtitle}>{age}</Text>
             </View>
           </View>
 

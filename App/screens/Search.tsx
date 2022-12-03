@@ -1,11 +1,10 @@
-import Colors from "../constants/Colors";
+import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
-
+import Colors from "../constants/Colors";
 import { View } from "../components/Themed";
 import { testProps } from "../Utils/utils.helper";
 import ScrollableTextInput from "../components/ScrollableSearchBar";
 import { useEffect, useState } from "react";
-import React from "react";
 import ResultList from "../components/SearchResultsList";
 import { SearchBy } from "../Helpers/search.helper";
 import {  getData } from "../services/GetAllUsers";
@@ -34,7 +33,7 @@ export default function Search({ navigation }: any) {
     <ScrollView
       nestedScrollEnabled={true}
       style={styles.container}
-      {...testProps("Registeration_Container")}
+      {...testProps("Search_Container")}
       contentContainerStyle={styles.content}
     >
       <View style={styles.wrapper}>

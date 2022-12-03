@@ -58,6 +58,7 @@ export default function Registeration({
         selectedProfession == ProfessionTypes.STUDENT ? "checked" : "unchecked",
     },
   ];
+
   const { nationalities } = useGetNationalities("https://api.first.org/data/v1/countries" );
 
   const onChangeText = (text: string) => setName(text);
@@ -95,6 +96,7 @@ export default function Registeration({
       <ScrollView
         nestedScrollEnabled={true}
         style={styles.container}
+        showsVerticalScrollIndicator={false}
         {...testProps("Registeration_Container")}
         contentContainerStyle={styles.content}
       >

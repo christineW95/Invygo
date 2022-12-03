@@ -1,6 +1,16 @@
 Used Husky for pre-commit hooks
 Used @testing-library for unit test
 Used babel-plugin-module-resolver for module imports
+used react-native-chart-kit for graphs
+used react-native-paper for UI components
+used morphism as mapper functions
+used axios for API calls
+used React Native Features:
+- custom hooks
+- hooks
+used typescript
+coverage is 73%
+
 # Invygo
 
 Meetup RSVP App

@@ -1,13 +1,17 @@
-import React from "react";
-import { render } from "@testing-library/react-native";
-import Registeration from "./../../App/../../App/screens/Registeration";
+import React from 'react'
+import {  render } from '@testing-library/react-native'
 
-describe("Testing react navigation", () => {
-  
-  it("navigates on button press", () => {
-    const push = jest.fn();
-    const { getByText } = render(<Registeration navigation={{ push }} />);
-    const title = getByText("Tab One");
-    expect(title).toBeTruthy();
-  });
-});
+import Registeration from '../../../App/screens/Registeration'
+
+
+describe('render Registeration screen successfully', () => {
+    const navigation={
+        navigate:jest.fn()
+    }
+  it('renders correctly', () => {
+    const {getByTestId} = render(<Registeration navigation={navigation} />)
+    const Logo_Component=getByTestId('Logo_Component')
+    expect(Logo_Component).toBeTruthy()
+  })
+ 
+})
