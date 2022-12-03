@@ -12,13 +12,26 @@ jest.mock("react-native-reanimated", () => {
 
   return Reanimated;
 });
-jest.mock('react-native-paper', () => {
-  const RealModule = jest.requireActual('react-native-paper');
-  const MockedModule = {
-    ...RealModule,
-    Portal: ({children}) => <></>
+jest.mock('@expo/vector-icons', () => {
+  const { View } = require('react-native');
+  return {
+    SimpleLineIcons: View,
+    Ionicons: View,
   };
-  return MockedModule;
+});
+jest.mock('react-native-paper', () => {
+  const View = require('react-native/Libraries/Components/View/View')
+  return {
+    /* Other */
+    List: {
+      Accordion:View,
+      Item:View
+    },
+    
+    RadioButton:View,
+    Modal:View
+   
+  }
 });
 jest.mock('axios', () => {
   return {
@@ -72,9 +85,7 @@ jest.mock('react-native-gesture-handler', () => {
     Directions: {}
   }
 })
-jest.mock("@expo/vector-icons", () => {
-  return () => "";
-});
+
 jest.mock("expo-font", () => {
   return () => "";
 });

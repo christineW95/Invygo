@@ -8,10 +8,10 @@ import { useEffect, useState } from "react";
 import React from "react";
 import ResultList from "../components/SearchResultsList";
 import { SearchBy } from "../Helpers/search.helper";
-import { HOME_ROUTES } from "../constants/Routes";
 import {  getData } from "../services/GetAllUsers";
 import { User } from "../Interfaces/User";
 import { Key, MOCK_BASE_URL } from "../services/config";
+import { HOME_ROUTES } from "../constants/Routes";
 
 export default function Search({ navigation }: any) {
   const [query, setQuery] = useState<string>("");

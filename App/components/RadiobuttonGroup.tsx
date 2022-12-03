@@ -18,9 +18,9 @@ const RadioButtonGroup = (props: RadioButtonGroupPropTypes) => {
 
   return (
     <View style={styles.wrapper}>
-      <Label label={label ?? label} style={{ color: "black" }} />
+      <Label label={label ?? label} style={styles.label} />
       <View style={styles.container}>
-        <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
+        <View style={styles.content}>
           <RenderContent />
         </View>
       </View>
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   wrapper: {
     margin: 30,
   },
+  label:{ color: "black" },
   container: {
     marginVertical: 10,
     backgroundColor: Colors.light.background,
@@ -50,4 +51,5 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 5,
   },
+  content:{ flexDirection: "row", justifyContent: "space-evenly" },
 });

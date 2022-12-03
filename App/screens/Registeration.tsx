@@ -18,7 +18,7 @@ import RadioButtonGroup from "../components/RadiobuttonGroup";
 import { useGetNationalities } from "../hooks/useNationalities";
 import NationalitiesDropdown from "../components/NationalitiesPicker";
 import { NationalityItem } from "../Interfaces/Nationalities";
-import AgePicker from "../components/AgePicker";
+import AgePicker from "../components/DropDown";
 import { Datepicker } from "../components/DatePicker";
 import ProfessionTypes from "../factory/profession.factory";
 import { submitUser } from "../services/SubmitUser";
@@ -26,6 +26,7 @@ import { User } from "../Interfaces/User";
 import { HOME_ROUTES } from "../constants/Routes";
 import { Modal } from "react-native-paper";
 import guests from "../factory/guests.factory";
+import DropDown from "../components/DropDown";
 
 export default function Registeration({
   navigation,
@@ -106,7 +107,7 @@ export default function Registeration({
             placeholder={"Enter your username"}
           />
 
-          <AgePicker
+          <DropDown
             label={"Age"}
             placeholder={"Enter your age"}
             listItems={listItems}

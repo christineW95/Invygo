@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import IconButton from "./IconButton";
 import Colors from "../constants/Colors";
+import { Ionicons } from "@expo/vector-icons";
 
 type ScrollableTextInputProps = {
   placeholder: string;
@@ -24,7 +25,7 @@ const ScrollableTextInput = ({
   return (
     <View {...testProps("ScrollableTextInput_ScrollView")} style={content}>
       <View style={flexOne}>
-        <IconButton iconName="md-search" size={15} color="green" />
+        <Ionicons name="md-search" size={15} color="green" />
       </View>
       <View
         style={textInputWrapper}

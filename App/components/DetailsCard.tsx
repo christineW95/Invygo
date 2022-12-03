@@ -1,6 +1,7 @@
 import Colors from '../constants/Colors';
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { testProps } from '../Utils/utils.helper';
 
 interface DetailsCardProps {
     label:string
@@ -12,11 +13,11 @@ const DetailsCard = ({label,value}: DetailsCardProps) => {
     <View
     style={styles.container}
   >
-    <Text style={styles.title}>
+    <Text style={styles.title} {...testProps('Title_Component')}>
       {label}
     </Text>
 
-    <Text>{value}</Text>
+    <Text {...testProps('Nationality_Component')}>{value}</Text>
   </View>
   );
 };

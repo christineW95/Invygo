@@ -1,4 +1,4 @@
-import { User } from "App/Interfaces/User";
+import { User } from "../../App/Interfaces/User";
 
 const SearchBy = (query: string, users: Array<User>) => {
   return users.filter(

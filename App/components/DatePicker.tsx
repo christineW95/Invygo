@@ -1,5 +1,4 @@
 import RNDateTimePicker from "@react-native-community/datetimepicker";
-import { testProps } from "../Utils/utils.helper";
 import { useState } from "react";
 import { Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Label from "./Label";

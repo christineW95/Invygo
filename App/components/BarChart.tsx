@@ -1,17 +1,22 @@
 import { Dimensions, StyleSheet, View } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 
-type ChartPropTypes = {};
+type ChartPropTypes = {
+  labels:Array<string>
+  data:Array<any>
+};
 
 const BarGraph = (props: ChartPropTypes) => {
+  const {labels,data}=props
   return (
     <View style={styles.wrapper}>
       <BarChart
+      
         data={{
-          labels: props.labels,
+          labels: labels,
           datasets: [
             {
-              data: props.data,
+              data: data,
             },
           ],
         }}

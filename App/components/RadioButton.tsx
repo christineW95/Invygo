@@ -29,7 +29,7 @@ const RadioButtonItem = (props: RadioButtonPropTypes) => {
           {...props}
         />
       </View>
-      <Label label={label ?? label} style={{ color: "black" }} />
+      <Label label={label ?? label} style={styles.label} />
     </View>
   );
 };
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  label:{ color: "black" },
   radioBtnWrapper:
     Platform.OS == "ios"
       ? {

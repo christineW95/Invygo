@@ -23,4 +23,4 @@ const getGraphData = (ages: Array<any>) => {
   const data = getBarLength(ages);
   return { labels, data };
 };
-export { getGraphData };
+export { getGraphData ,generateGraphData,getBarLength};

@@ -6,15 +6,15 @@ import BarGraph from "./BarChart";
 
 export default function Graph({ labels, data, title }: any) {
   return (
-    <View style={{ flex: 1, backgroundColor: Colors.light.Secondary }}>
+    <View style={styles.wrapper}>
       <ScrollView
         nestedScrollEnabled={true}
         style={styles.container}
-        {...testProps("Registeration_Container")}
-        contentContainerStyle={[styles.content, { flexGrow: 1 }]}
+        {...testProps("Graph_Container")}
+        contentContainerStyle={styles.content}
       >
-        <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 24, margin: 10, fontWeight: "bold" }}>
+        <View style={styles.container}>
+          <Text style={styles.title}>
             {title}
           </Text>
           <BarGraph labels={labels} data={data} />
@@ -25,13 +25,15 @@ export default function Graph({ labels, data, title }: any) {
 }
 
 const styles = StyleSheet.create({
+  wrapper:{ flex: 1, backgroundColor: Colors.light.Secondary },
   container: {
     flex: 1,
   },
-
+  title:{ fontSize: 24, margin: 10, fontWeight: "bold" },
   content: {
     backgroundColor: Colors.light.Secondary,
     justifyContent: "center",
     paddingVertical: 30,
+    flexGrow: 1
   },
 });

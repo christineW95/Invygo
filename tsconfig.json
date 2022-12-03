@@ -12,6 +12,11 @@
     "noEmit": true,
     "target": "esnext",
     "skipLibCheck": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "*": ["App/*"],
+      "test/*": ["test/*"],
+      "underscore": ["lodash"]
+    }
   }
 }

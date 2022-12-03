@@ -1,3 +1,6 @@
+Used Husky for pre-commit hooks
+Used @testing-library for unit test
+Used babel-plugin-module-resolver for module imports
 # Invygo
 
 Meetup RSVP App

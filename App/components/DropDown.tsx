@@ -15,7 +15,7 @@ type DropDownTypes = {
   placeholder: string;
 };
 
-const DropDown = (props: DropDownTypes) => {
+function DropDown (props: DropDownTypes) {
   const { label, placeholder, listItems, selected, onSelect } = props;
   const [expanded, setExpanded] = React.useState<boolean>(false);
 
@@ -25,19 +25,20 @@ const DropDown = (props: DropDownTypes) => {
     onSelect(index);
     handlePress();
   };
+  const RenderItem=({ item, index }) => (
+    <List.Item
+      {...testProps("AccordionItem_Component" + index)}
+      title={item}
+      onPress={() => onPress(index)}
+    />
+  )
   const RenderList = () => (
     <FlatList
       data={listItems}
       keyExtractor={({ item, index }) => index}
       style={{ maxHeight: 200 }}
       {...testProps('List_Component')}
-      renderItem={({ item, index }) => (
-        <List.Item
-          {...testProps("AccordionItem_Component")}
-          title={item}
-          onPress={() => onPress(index)}
-        />
-      )}
+      renderItem={({item,index})=><RenderItem item={item} index={index}/>}
     />
   );
 
